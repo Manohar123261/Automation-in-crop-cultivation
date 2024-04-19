@@ -26,13 +26,13 @@ class Blockchain{
             const validatehash=cryptohash(timestamp,prevhash,nonce,difficulty,data);
             if(validatehash!==hash)
                 return false;
-            if(Math.abs(difficulty-lastdifficulty)>1) 
+            if(Math.abs(difficulty-lastdifficulty)>1)
                 return false;
         }
         return true;
     }
-    static replaceChain(chain){
-        if(chain<=this.chain.length){
+    replaceChain(chain){
+        if(chain.length<=this.chain.length){
             console.error("This chain is not no longer than current chain");
             return;
         }
@@ -43,9 +43,9 @@ class Blockchain{
         this.chain=chain;
     }
 }
-const blockchain=new Blockchain();
-blockchain.addblock({data:"hello world"});
-blockchain.addblock({data:"hello juet"});
+// const blockchain=new Blockchain();
+// blockchain.addblock({data:"hello world"});
+// blockchain.addblock({data:"hello juet"});
 // console.log(blockchain);
 // console.log(Blockchain.isValidChain(blockchain.chain));
 module.exports=Blockchain;
